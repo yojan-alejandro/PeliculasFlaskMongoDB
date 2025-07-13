@@ -1,0 +1,58 @@
+# -----------------------------
+# GENEROS
+# -----------------------------
+
+# listar generos 
+# GET http://localhost:5000/genero/
+
+# Agregar un genero
+POST http://localhost:5000/genero/
+Content-Type: 
+
+{
+    "nombre":"Anime"
+}
+
+# Actualizar un genero
+PUT http://localhost:5000/genero/686ee91518b4eb6db0506cd2
+Content-Type: 
+
+{
+    "nombre":"Animación"
+}
+
+# Eliminar un genero
+DELETE http://localhost:5000/genero/686ee91518b4eb6db0506cd2
+
+# -----------------------------
+# PELICULAS
+# -----------------------------
+
+# Listar peliculas
+# GET  http://localhost:5000/pelicula/
+
+# Agregar una pelicula
+POST http://localhost:5000/pelicula/
+Content-Type: application/json
+
+{
+    "codigo": 102,
+    "titulo": "El Castillo Ambulante",
+    "protagonista": "Sophie",
+    "duracion": 119,
+    "resumen": "Una joven hechizada entra al castillo mágico de Howl.",
+    "foto": "howl.jpg",
+    "genero": "686ee91518b4eb6db0506cd2"
+}
+
+# Actualizar una pelicula
+PUT http://localhost:5000/pelicula/685dcb14f6c573b9de9a0e7c
+Content-Type: application/json
+
+{
+    "titulo": "¿Qué pasó ayer? (Edición especial)",
+    "duracion": 105
+}
+
+# Eliminar una pelicula 
+DELETE http://localhost:5000/pelicula/685dcb14f6c573b9de9a0e7c

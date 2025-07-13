@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<h2>Iniciar Sesión</h2>
+<form id="formLogin">
+    <label>Usuario:</label>
+    <input type="text" id="usuario" required>
+
+    <label>Contraseña:</label>
+    <input type="password" id="password" required><br><br>
+
+    <button type="button" onclick="iniciarSesion()" class="btn-agregar">Iniciar Sesión</button>
+</form>
+
+<p id="mensajeLogin" style="color: red;"></p>
+{% endblock %}

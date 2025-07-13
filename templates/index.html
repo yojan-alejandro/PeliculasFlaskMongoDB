@@ -1,0 +1,22 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Películas App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+    {% include 'encabezado.html' %}
+    {% include 'menu.html' %}
+
+    <main class="contenido">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    {% include 'piePagina.html' %}
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

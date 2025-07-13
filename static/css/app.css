@@ -1,0 +1,189 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+
+/* Encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* ---------------------- */
+/* Menú */
+nav {
+    background-color: #444;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 5px;
+}
+
+nav ul li a {
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #000;
+    background-color: #666;
+    padding: 15px 40px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ---------------------- */
+
+/* Contenido */
+.contenido {
+    margin: auto ;
+    max-width: 800px;
+    padding: 30px;
+    line-height: 25px;
+    border-radius: 10px;
+    background-color: #444;
+}
+
+.contenido > h2{
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.contenido > ul {
+    margin-left: 15px;
+}
+
+/* ---------------------- */
+
+/* Pie de página */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 15px;
+}
+
+/* ---------------------- */
+
+/* boton de agregar */
+.btn-agregar {
+    display: inline-block;
+    background-color: #555;
+    color: #fff;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-agregar:hover {
+    background-color: #333;
+}
+
+/* ---------------------- */
+/*  Tabla de géneros */
+.tabla-generos {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabla-generos th, .tabla-generos td {
+    padding: 12px;
+    border: 2px solid #000;
+}
+
+.tabla-generos thead {
+    background-color: #555;
+    color: #fff;
+}
+
+/* ---------------------- */
+/* Formulario para agregar género */
+.formGenero {
+    margin-top: 20px;
+}
+
+.formGenero > input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    display: block;
+    border: none;
+    border-radius: 5px;
+}
+
+/* ---------------------- */
+/* listado de peliculas */
+.tabla-peliculas {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tabla-peliculas th, .tabla-peliculas td {
+    border: 2px solid #000;
+    padding: 10px;
+}
+
+.tabla-peliculas thead {
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+}
+
+/* agregar pelicula */
+input {
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+/* ---------------------- */
+/* Botones de editar y eliminar */
+.btn-editar, .btn-eliminar, .btn-cancelar {
+    background-color: #555;
+    color: #fff;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-editar:hover, .btn-eliminar:hover, .btn-cancelar:hover {
+    background-color: #333;
+}
+
+/* ---------------------- */
+/* Formulario para editar pelicula */
+/* Panel lateral derecho */
+.panel-lateral {
+    display: none;
+    position: fixed;
+    top: 230px; 
+    right: 20px;
+    width: 250px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+

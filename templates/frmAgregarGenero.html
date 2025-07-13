@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<h2>Agregar Género</h2>
+
+<form class="formGenero">
+    <label for="nombreGenero">Nombre del género:</label><br>
+    <input type="text" id="nombreGenero" name="nombreGenero" required>
+    <br>
+    <button type="button" onclick="agregarGenero()" class="btn-agregar">Agregar</button>
+    <button type="button" onclick="cancelarGenero()" class="btn-cancelar">Cancelar</button>
+</form>
+
+<p id="mensaje"></p>
+{% endblock %}

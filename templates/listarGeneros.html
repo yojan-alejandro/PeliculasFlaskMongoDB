@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<h2>Lista de Géneros</h2>
+
+<!-- Botón Agregar -->
+<a href="/genero/agregar" class="btn-agregar">
+    Agregar
+</a>
+
+<!-- Tabla de géneros -->
+<table class="tabla-generos">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for genero in generos %}
+        <tr id="fila-genero-{{ genero.id }}">
+            <td>{{ genero.nombre }}</td>
+            <td>
+                <button onclick="editarGenero('{{ genero.id }}')" class="btn-editar">Editar</button>
+                <button onclick="eliminarGenero('{{ genero.id }}')" class="btn-eliminar">Eliminar</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Panel lateral de edición -->
+<div id="panel-editar-genero" class="panel-lateral">
+    <h3>Editar Género</h3>
+    <input type="text" id="nuevo-nombre-genero" placeholder="Nuevo nombre del género">
+    <br><br>
+    <button onclick="confirmarEdicionGenero()" class="btn-editar">Guardar</button>
+    <button onclick="cancelarEdicionGenero()" class="btn-cancelar">Cancelar</button>
+</div>
+
+
+{% endblock %}

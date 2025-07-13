@@ -1,0 +1,36 @@
+<nav>
+    <ul>
+        <li>
+            <a href="/">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="/genero/listar">
+                Géneros
+            </a>
+        </li>
+        <li>
+            <a href="/pelicula/listar">
+                Películas
+            </a>
+        </li>
+        {% if session['usuario'] %}
+        <li>    
+            <strong>
+                Hola, {{ session['usuario'] }} 👋
+            </strong>  
+        </li>
+        <li><a href="/logout">Cerrar sesión</a></li>
+        {% else %}
+        <li><a href="/registro">Registrarse</a></li>
+        <li><a href="/login">Inicio de sesión</a></li>
+        {% endif %}
+
+    </ul>
+</nav>
+
+<script src="/static/js/app.js"></script>
+
+{% block contenido %}
+{% endblock %}

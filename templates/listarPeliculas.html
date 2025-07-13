@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+<h2>Lista de Películas</h2>
+
+
+<a href="/pelicula/agregar" class="btn-agregar">
+    Agregar
+</a>
+
+<table class="tabla-peliculas">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Título</th>
+            <th>Resumen</th>
+            <th>Duración</th>
+            <th>Protagonista</th>
+            <th>Genero</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for peli in peliculas %}
+        <tr id="fila-pelicula-{{ peli.id }}">
+            <td>{{ peli.codigo }}</td>
+            <td>{{ peli.titulo }}</td>
+            <td>{{ peli.descripcion }}</td>
+            <td>{{ peli.duracion }}</td>
+            <td>{{ peli.protagonista }}</td>
+            <td>{{ peli.genero.nombre if peli.genero else 'Sin género' }}</td>
+            <td>
+                <button onclick="editarPelicula('{{ peli.id }}')" class="btn-editar">Editar</button>
+                <br>
+                <br>
+                <button onclick="eliminarPelicula('{{ peli.id }}')" class="btn-eliminar">Eliminar</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Panel lateral para editar película -->
+<div id="panel-editar-pelicula" class="panel-lateral">
+    <h3>Editar Película</h3>
+    <input type="text" id="tituloEditar" placeholder="Título">
+    <input type="text" id="descripcionEditar" placeholder="descripcion">
+    <input type="number" id="duracionEditar" placeholder="Duración (min)">
+    <input type="text" id="protagonistaEditar" placeholder="Protagonista">
+    <br><br>
+    <button onclick="confirmarEdicionPelicula()" class="btn-editar">Guardar</button>
+    <button onclick="cancelarEdicionPelicula()" class="btn-cancelar">Cancelar</button>
+</div>
+
+{% endblock %}
