@@ -2,15 +2,24 @@
 
 {% block contenido %}
 <h2>Iniciar Sesión</h2>
-<form id="formLogin">
+<form class="formLogin">
     <label>Usuario:</label>
-    <input type="text" id="usuario" required>
+    <input type="text" id="usuario" required placeholder="Ingrese su usuario"><br>
 
     <label>Contraseña:</label>
-    <input type="password" id="password" required><br><br>
+    <input type="password" id="password" required placeholder="Ingrese su contraseña"><br>
 
     <button type="button" onclick="iniciarSesion()" class="btn-agregar">Iniciar Sesión</button>
 </form>
+<!-- Modal personalizado -->
+<div id="modalExito" class="modal" style="display: none;">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <h3>✅ Inicio de sesión exitoso</h3>
+        <p>Bienvenido/a al sistema.</p>
+    </div>
+</div>
+
 
 <p id="mensajeLogin" style="color: red;"></p>
 {% endblock %}

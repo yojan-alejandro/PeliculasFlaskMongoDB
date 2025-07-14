@@ -3,14 +3,14 @@ function agregarGenero() {
     const nombre = document.getElementById("nombreGenero").value;
     fetch('/genero/', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({nombre: nombre})
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre })
     })
-    .then(response => response.json())
-    .then(data => {
-        alert("Género agregado con éxito");
-        window.location.reload();
-    });
+        .then(response => response.json())
+        .then(data => {
+            alert("Género agregado con éxito");
+            window.location.reload();
+        });
 }
 
 function agregarPelicula() {
@@ -28,18 +28,18 @@ function agregarPelicula() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            document.getElementById("mensaje").innerText = "✅ Película agregada correctamente.";
-            document.getElementById("formPelicula").reset();
-        } else {
-            document.getElementById("mensaje").innerText = "❌ Error: " + data.mensaje;
-        }
-    })
-    .catch(err => {
-        document.getElementById("mensaje").innerText = "❌ Error de red: " + err;
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                document.getElementById("mensaje").innerText = "✅ Película agregada correctamente.";
+                document.getElementById("formPelicula").reset();
+            } else {
+                document.getElementById("mensaje").innerText = "❌ Error: " + data.mensaje;
+            }
+        })
+        .catch(err => {
+            document.getElementById("mensaje").innerText = "❌ Error de red: " + err;
+        });
 }
 
 // funcionalidad de los botones
@@ -49,19 +49,19 @@ function eliminarGenero(id) {
     fetch(`/genero/${id}`, {
         method: "DELETE"
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert("✅ Género eliminado");
-            // Borra la fila visualmente
-            document.getElementById(`fila-genero-${id}`).remove();
-        } else {
-            alert("❌ Error: " + data.mensaje);
-        }
-    })
-    .catch(error => {
-        alert("❌ Error al eliminar: " + error);
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                alert("✅ Género eliminado");
+                // Borra la fila visualmente
+                document.getElementById(`fila-genero-${id}`).remove();
+            } else {
+                alert("❌ Error: " + data.mensaje);
+            }
+        })
+        .catch(error => {
+            alert("❌ Error al eliminar: " + error);
+        });
 }
 
 function eliminarPelicula(id) {
@@ -70,18 +70,18 @@ function eliminarPelicula(id) {
     fetch(`/pelicula/${id}`, {
         method: "DELETE"
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert("✅ Película eliminada");
-            document.getElementById(`fila-pelicula-${id}`).remove();
-        } else {
-            alert("❌ Error: " + data.mensaje);
-        }
-    })
-    .catch(error => {
-        alert("❌ Error al eliminar: " + error);
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                alert("✅ Película eliminada");
+                document.getElementById(`fila-pelicula-${id}`).remove();
+            } else {
+                alert("❌ Error: " + data.mensaje);
+            }
+        })
+        .catch(error => {
+            alert("❌ Error al eliminar: " + error);
+        });
 }
 
 function editarPelicula(id) {
@@ -123,18 +123,18 @@ function confirmarEdicionGenero() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre: nuevoNombre })
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert("✅ Género actualizado");
-            window.location.reload();
-        } else {
-            alert("❌ Error: " + data.mensaje);
-        }
-    })
-    .catch(error => {
-        alert("❌ Error de red: " + error);
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                alert("✅ Género actualizado");
+                window.location.reload();
+            } else {
+                alert("❌ Error: " + data.mensaje);
+            }
+        })
+        .catch(error => {
+            alert("❌ Error de red: " + error);
+        });
 }
 
 
@@ -167,18 +167,18 @@ function confirmarEdicionPelicula() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert("✅ Película actualizada");
-            window.location.reload();
-        } else {
-            alert("❌ Error: " + data.mensaje);
-        }
-    })
-    .catch(error => {
-        alert("❌ Error de red: " + error);
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                alert("✅ Película actualizada");
+                window.location.reload();
+            } else {
+                alert("❌ Error: " + data.mensaje);
+            }
+        })
+        .catch(error => {
+            alert("❌ Error de red: " + error);
+        });
 }
 
 // iniciar sesion
@@ -191,18 +191,21 @@ function iniciarSesion() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usuario, password })
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert("✅ Bienvenido");
-            window.location.href = "/";
-        } else {
-            document.getElementById("mensajeLogin").innerText = data.mensaje;
-        }
-    })
-    .catch(error => {
-        document.getElementById("mensajeLogin").innerText = "❌ Error de red";
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                document.getElementById("modalExito").style.display = "flex";
+                setTimeout(() => {
+                    window.location.href = "/";  
+                }, 2000);
+            } else {
+                document.getElementById("mensajeLogin").textContent = data.mensaje;
+            }
+        })
+        .catch(err => {
+            document.getElementById("mensajeLogin").textContent = "❌ Error al procesar login.";
+            console.error(err);
+        });
 }
 
 // registrarse
@@ -216,19 +219,19 @@ function registrarUsuario() {
 
     fetch("/registro", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(datos)
     })
-    .then(res => res.json())
-    .then(data => {
-        if (data.estado) {
-            alert(data.mensaje);
-            window.location.href = "/login";
-        } else {
-            document.getElementById("mensajeRegistro").innerText = data.mensaje;
-        }
-    })
-    .catch(() => {
-        document.getElementById("mensajeRegistro").innerText = "❌ Error de red.";
-    });
+        .then(res => res.json())
+        .then(data => {
+            if (data.estado) {
+                alert(data.mensaje);
+                window.location.href = "/login";
+            } else {
+                document.getElementById("mensajeRegistro").innerText = data.mensaje;
+            }
+        })
+        .catch(() => {
+            document.getElementById("mensajeRegistro").innerText = "❌ Error de red.";
+        });
 }
