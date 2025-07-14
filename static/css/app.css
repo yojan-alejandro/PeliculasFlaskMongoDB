@@ -263,6 +263,32 @@ input[type="password"] {
 }
 
 /* ---------------------- */
+/* Formulario para registro */
+.formRegistro {
+    width: 500px;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+.formRegistro>label {
+    font-size: 1.5rem;
+}
+
+.formRegistro>input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 550px;
+    height: 45px;
+    padding: 5px;
+    margin: 15px 0 25px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 5px solid #130c0caa;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+/* ---------------------- */
 /* Formulario para editar pelicula y genero */
 /* Panel lateral derecho */
 .panel-lateral {
