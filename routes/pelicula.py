@@ -1,10 +1,11 @@
-from flask import request, render_template
+from flask import Blueprint,request, render_template
 from models.pelicula import Pelicula
 from models.genero import Genero
 from utils.login_required import login_required
-from app import app,db
 
-@app.route("/pelicula/",methods=["GET"])
+pelicula_bp = Blueprint("pelicula", __name__)
+
+@pelicula_bp.route("/pelicula/",methods=["GET"])
 @login_required
 def listPeliculas():
     try:
@@ -15,7 +16,7 @@ def listPeliculas():
 
     return{"mensaje":mensaje, "peliculas":peliculas}
 
-@app.route("/pelicula/",methods=["POST"])
+@pelicula_bp.route("/pelicula/",methods=["POST"])
 @login_required
 def addPelicula():
     try:
@@ -36,7 +37,7 @@ def addPelicula():
 
     return{"estado":estado,"mensaje":mensaje}
 
-@app.route("/pelicula/<id>", methods=["PUT"])
+@pelicula_bp.route("/pelicula/<id>", methods=["PUT"])
 @login_required
 def updatePelicula(id):
     try:
@@ -57,7 +58,7 @@ def updatePelicula(id):
 
     return {"estado": estado, "mensaje": mensaje}
 
-@app.route("/pelicula/<id>", methods=["DELETE"])
+@pelicula_bp.route("/pelicula/<id>", methods=["DELETE"])
 @login_required
 def deletePelicula(id):
     try:
@@ -76,13 +77,13 @@ def deletePelicula(id):
 
     return {"estado": estado, "mensaje": mensaje}
 
-@app.route("/pelicula/listar", methods=["GET"])
+@pelicula_bp.route("/pelicula/listar", methods=["GET"])
 @login_required
 def listar_peliculas():
     peliculas = Pelicula.objects()
     return render_template("listarPeliculas.html", peliculas=peliculas)
 
-@app.route("/pelicula/agregar", methods=["GET"])
+@pelicula_bp.route("/pelicula/agregar", methods=["GET"])
 @login_required
 def vista_agregar_pelicula():
     generos = Genero.objects()

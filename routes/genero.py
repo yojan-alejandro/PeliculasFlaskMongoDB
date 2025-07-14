@@ -1,9 +1,10 @@
-from flask import request, render_template
+from flask import Blueprint,request, render_template
 from models.genero import Genero
 from utils.login_required import login_required
-from app import app,db
 
-@app.route("/genero/", methods=["GET"])
+genero_bp = Blueprint("genero",__name__)
+
+@genero_bp.route("/genero/", methods=["GET"])
 @login_required
 def listarGeneros():
     try :
@@ -15,7 +16,7 @@ def listarGeneros():
     
     return{"mensaje":mensaje, "generos":generos}
 
-@app.route("/genero/", methods=["POST"])
+@genero_bp.route("/genero/", methods=["POST"])
 @login_required
 def addGenero():
     try :
@@ -39,7 +40,7 @@ def addGenero():
 
     return{"estado":estado,"mensaje":mensaje}
 
-@app.route("/genero/<id>", methods=["PUT"])
+@genero_bp.route("/genero/<id>", methods=["PUT"])
 @login_required
 def actualizar_genero(id):
     try:
@@ -59,7 +60,7 @@ def actualizar_genero(id):
 
     return {"estado": estado, "mensaje": mensaje}
 
-@app.route("/genero/<id>", methods=["DELETE"])
+@genero_bp.route("/genero/<id>", methods=["DELETE"])
 @login_required
 def eliminar_genero(id):
     try:
@@ -78,7 +79,7 @@ def eliminar_genero(id):
 
     return {"estado": estado, "mensaje": mensaje}
 
-@app.route("/genero/listar", methods=["GET"])
+@genero_bp.route("/genero/listar", methods=["GET"])
 @login_required
 def vista_listar_generos():
     try:
@@ -87,7 +88,7 @@ def vista_listar_generos():
     except Exception as e:
         return f"Error: {str(e)}"
     
-@app.route("/genero/agregar", methods=["GET"])
+@genero_bp.route("/genero/agregar", methods=["GET"])
 @login_required
 def vista_agregar_genero():
     return render_template("frmAgregarGenero.html")
