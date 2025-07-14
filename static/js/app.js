@@ -30,11 +30,17 @@ function agregarPelicula() {
     })
         .then(res => res.json())
         .then(data => {
-            if (data.estado) {
-                document.getElementById("mensaje").innerText = "✅ Película agregada correctamente.";
-                document.getElementById("formPelicula").reset();
+            const form = document.getElementById("formPelicula");
+            if (form) {
+                form.reset();
             } else {
-                document.getElementById("mensaje").innerText = "❌ Error: " + data.mensaje;
+                console.warn("⚠️ El formulario con id 'formPelicula' no existe");
+            }
+            if (data.estado) {
+                alert("✅ Película agregada con éxito");
+                window.location.reload();
+            } else {
+                alert("❌ Error al agregar la película: " + data.mensaje);
             }
         })
         .catch(err => {
@@ -196,7 +202,7 @@ function iniciarSesion() {
             if (data.estado) {
                 document.getElementById("modalExito").style.display = "flex";
                 setTimeout(() => {
-                    window.location.href = "/";  
+                    window.location.href = "/";
                 }, 2000);
             } else {
                 document.getElementById("mensajeLogin").textContent = data.mensaje;
